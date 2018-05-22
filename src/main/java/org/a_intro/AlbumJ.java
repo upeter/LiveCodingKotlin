@@ -5,12 +5,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class AlbumJ {
 
@@ -39,9 +37,7 @@ public class AlbumJ {
     public AlbumJ combine(AlbumJ other) {
         Set<PhotoJ> unique = new HashSet<>(photos);
         unique.addAll(other.photos);
-        List<PhotoJ> all = new ArrayList<>();
-        all.addAll(unique);
-        return new AlbumJ(all);
+        return new AlbumJ(new ArrayList<>(unique));
     }
 
 

@@ -30,9 +30,7 @@ public class AlbumJ_V04 {
     public AlbumJ_V04 combine(AlbumJ_V04 other) {
         Set<PhotoJ> unique = new HashSet<>(photos);
         unique.addAll(other.photos);
-        List<PhotoJ> all = new ArrayList<>();
-        all.addAll(unique);
-        return new AlbumJ_V04(all);
+        return new AlbumJ_V04(new ArrayList<>(unique));
     }
 
     public List<PhotoJ> filter(Predicate<PhotoJ> predicate) {
