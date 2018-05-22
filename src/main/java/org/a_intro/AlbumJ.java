@@ -14,7 +14,6 @@ public class AlbumJ {
 
     final static Logger LOG = LoggerFactory.getLogger(CopyableJ.class);
 
-
     private final List<PhotoJ> photos;
 
     public AlbumJ(List<PhotoJ> photos) {
@@ -56,9 +55,9 @@ public class AlbumJ {
         this.photos.forEach(photo -> {
             try {
                 photo.copyTo(path);
-                LOG.info("Succesfully copied " + photo.getURL());
+                LOG.info("Succesfully copied {}", photo.getURL());
             } catch (IOException ex) {
-                LOG.error("Failed to copy " + photo.getURL(), ex);
+                LOG.error("Failed to copy {}", photo.getURL(), ex);
             }
 
         });
