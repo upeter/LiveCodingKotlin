@@ -9,15 +9,20 @@ import static org.apache.commons.io.FileUtils.copyURLToFile;
 
 public interface CopyableJ {
 
-	public URL getURL();
+    public URL getURL();
 
-	default File copyTo(File target) throws MalformedURLException, IOException {
-			File to = target;
-			if (target.isDirectory()) {
-				String[] pathElements = getURL().getFile().split("/");
-				to = new File(target, pathElements[pathElements.length - 1]);
-			}
-			copyURLToFile(getURL(), to);
-			return to;
-		}
+    default File copyTo(File target) throws MalformedURLException, IOException {
+        return copyTo(getURL(), target);
+    }
+
+
+    static File copyTo(URL url, File target) throws IOException {
+        File to = target;
+        if (target.isDirectory()) {
+            String[] pathElements = url.getFile().split("/");
+            to = new File(target, pathElements[pathElements.length - 1]);
+        }
+        copyURLToFile(url, to);
+        return to;
+    }
 }
