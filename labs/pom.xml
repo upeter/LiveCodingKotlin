@@ -17,7 +17,7 @@
                     someone else also run into this problem: https://discuss.kotlinlang.org/t/kotlin-compiler-incremental-not-copying-resources/5640
         -->
         <kotlin.compiler.incremental>false</kotlin.compiler.incremental>
-        <kotlin.version>1.2.51</kotlin.version>
+        <kotlin.version>1.2.61</kotlin.version>
     </properties>
 
     <dependencies>
