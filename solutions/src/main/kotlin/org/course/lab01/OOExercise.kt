@@ -18,16 +18,23 @@ package org.course.lab01
  *
  * Exercise 2:
  * - Create an abstract class Currency
- * - Provide it with one constructor parameter: symbol:String
+ * - Provide it with one constructor parameter: symbol:Symbol
+ * - Symbol is an Enum with constants for EUR and USD and an immutable field: sign:String
  * - Extend the previously created Euro class from Currency
  * - Override the toString method of Euro to represent the following String:
- *   -> symbol + ': ' + euro + ',' + cents.  E.g: EUR 200,05
+ *   -> symbol.sign + ': ' + euro + ',' + cents.  E.g: € 200,05
  * - In case the cents are 0 use this representation:
- *   -> symbol + ': ' + euro + ',--. E.g.: EUR 200.--
+ *   -> symbol.sign + ': ' + euro + ',--. E.g.: € 200.--
  */
-abstract class Currency(val symbol: String)
 
-class Euro(val euro: Int, val cents: Int = 0):Currency("EUR"),Comparable<Euro> {
+enum class Symbol(val sign: String) {
+    EUR("€"), USD("$")
+
+}
+
+abstract class Currency(val symbol: Symbol)
+
+class Euro(val euro: Int, val cents: Int = 0) : Currency(Symbol.EUR), Comparable<Euro> {
     val inCents: Int = euro * 100 + cents
 
     infix operator fun plus(other: Euro): Euro = fromCents(inCents + other.inCents)
@@ -35,16 +42,16 @@ class Euro(val euro: Int, val cents: Int = 0):Currency("EUR"),Comparable<Euro> {
     infix operator fun times(n: Int): Euro = fromCents(n * inCents)
 
     infix operator fun div(n: Int): Euro {
-        require(n > 0, {"Divider must be greater than 0"})
+        require(n > 0, { "Divider must be greater than 0" })
         return fromCents(inCents / n)
     }
 
-    override fun toString() = "$symbol: $euro,${if (cents > 0) "${String.format("%02d", cents)}" else "--"}"
+    override fun toString() = "${symbol.sign}: $euro,${if (cents > 0) "${String.format("%02d", cents)}" else "--"}"
 
     override fun compareTo(that: Euro): Int = inCents - that.inCents
 
     companion object {
-        fun fromCents(cents: Int) =  Euro(cents / 100, cents % 100)
+        fun fromCents(cents: Int) = Euro(cents / 100, cents % 100)
 
     }
 }

@@ -47,15 +47,15 @@ class OOExerciseTest : WordSpec() {
         "Exercise 2: an Euro" should {
             "be a subclass of Currency" {
                 TODO("Uncomment and fix me")
-//                val e: Currency = Euro(2, 5)
-//                e.symbol shouldBe "EUR"
+//            val e: Currency = Euro(2, 5)
+//            e.symbol shouldBe Symbol.EUR
             }
             "have correct toString representation" {
                 TODO("Uncomment and fix me")
-//                val e = Euro(2, 5)
-//                e.toString() shouldBe "EUR: 2,05"
-//                val e2 = Euro(2)
-//                e2.toString() shouldBe "EUR: 2,--"
+//            val e = Euro(2, 5)
+//            e.toString() shouldBe "€: 2,05"
+//            val e2 = Euro(2)
+//            e2.toString() shouldBe "€: 2,--"
             }
         }
     }

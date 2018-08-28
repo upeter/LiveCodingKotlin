@@ -18,13 +18,15 @@ package org.course.lab01
  *
  * Exercise 2:
  * - Create an abstract class Currency
- * - Provide it with one constructor parameter: symbol:String
+ * - Provide it with one constructor parameter: symbol:Symbol
+ * - Symbol is an Enum with constants for EUR and USD and an immutable field: sign:String
  * - Extend the previously created Euro class from Currency
  * - Override the toString method of Euro to represent the following String:
- *   -> symbol + ': ' + euro + ',' + cents.  E.g: EUR 200,05
+ *   -> symbol.sign + ': ' + euro + ',' + cents.  E.g: € 200,05
  * - In case the cents are 0 use this representation:
- *   -> symbol + ': ' + euro + ',--. E.g.: EUR 200.--
+ *   -> symbol.sign + ': ' + euro + ',--. E.g.: € 200.--
  */
+
 class Euro {
 
 }
