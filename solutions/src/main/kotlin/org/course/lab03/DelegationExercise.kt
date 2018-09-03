@@ -25,7 +25,7 @@ import kotlin.reflect.KProperty
  * It contains a traceGetter and traceSetter method that keeps track of how many times a particular setter or getter is called.
  * Convert the FieldAccessTracer into a property delegate implementing the methods of the ReadWriteProperty interface. In the getValue(...) method
  * make use of traceGetter to track field access. In the setValue(...) method make use of traceSetter to track a field assignment.
- * Finally, apply the FieldAccessTracer delegate on the Employee's age field.
+ * Finally, apply the FieldAccessTracer delegate on the Employee's age and name field.
  * Make all tests succeed.
  */
 class Company(private val employees: List<Employee>) : List<Employee> by employees, Logger by logger {
@@ -41,8 +41,9 @@ class Company(private val employees: List<Employee>) : List<Employee> by employe
 
 }
 
-class Employee(var name: String, age_: Int) {
+class Employee(name_: String, age_: Int) {
     var age: Int by FieldAccessTracer(age_)
+    var name:String by FieldAccessTracer(name_)
 }
 
 class FieldAccessTracer<T>(private var value: T): ReadWriteProperty<Any?, T> {

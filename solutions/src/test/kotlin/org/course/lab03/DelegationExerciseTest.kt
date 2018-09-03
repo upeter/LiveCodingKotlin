@@ -44,15 +44,28 @@ class DelegationExerciseTest : WordSpec() {
             "Access to Employee field age (getter and setter) should be registered by FieldAccessTracer"  {
                 FieldAccessTracer.registry.clear()
                 val joe = Employee("Joe", 42)
+                //tracing age
                 joe.age shouldBe 42
                 joe.age = 24
                 joe.age shouldBe 24
-                println(FieldAccessTracer.registry.keys().toList())
                 FieldAccessTracer.registry.keys().toList().size shouldBe 2
-                val getterKey = FieldAccessTracer.key(joe, "age", "get")
-                FieldAccessTracer.registry.get(getterKey) shouldBe 2
-                val setterKey = FieldAccessTracer.key(joe, "age", "set")
-                FieldAccessTracer.registry.get(setterKey) shouldBe 1
+                val ageGetterKey = FieldAccessTracer.key(joe, "age", "get")
+                FieldAccessTracer.registry.get(ageGetterKey) shouldBe 2
+                val ageSetterKey = FieldAccessTracer.key(joe, "age", "set")
+                FieldAccessTracer.registry.get(ageSetterKey) shouldBe 1
+            }
+            "Access to Employee field name (getter and setter) should be registered by FieldAccessTracer"  {
+                FieldAccessTracer.registry.clear()
+                val joe = Employee("Joe", 42)
+                //tracing name
+                joe.name shouldBe "Joe"
+                joe.name = "John"
+                joe.name shouldBe "John"
+                FieldAccessTracer.registry.keys().toList().size shouldBe 2
+                val nameGetterKey = FieldAccessTracer.key(joe, "name", "get")
+                FieldAccessTracer.registry.get(nameGetterKey) shouldBe 2
+                val nameSetterKey = FieldAccessTracer.key(joe, "name", "set")
+                FieldAccessTracer.registry.get(nameSetterKey) shouldBe 1
             }
 
 
