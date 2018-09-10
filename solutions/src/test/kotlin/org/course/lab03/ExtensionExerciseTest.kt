@@ -19,11 +19,13 @@ class ExtensionExerciseTest : WordSpec() {
                 "".tail shouldBe ""
             }
             "have Any? extended with an equals method" {
-                "A".equals("A") shouldBe true
-                null.equals(null) shouldBe true
-                "A".equals("B") shouldBe false
-                null.equals("B") shouldBe false
-                "A".equals(null) shouldBe false
+                class Foo()
+                val foo:Foo? = Foo()
+                val noFoo:Foo? = null
+                noFoo.equals(noFoo) shouldBe true
+                null.equals(noFoo) shouldBe true
+                noFoo.equals(2) shouldBe false
+                noFoo.equals(foo) shouldBe false
             }
             "have Iterable<Any> extended with an filterByType method" {
                 val l = listOf("a", 2, 3.0, {})
