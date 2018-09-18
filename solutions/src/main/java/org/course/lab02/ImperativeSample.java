@@ -6,7 +6,7 @@ import java.util.*;
  * This piece of java code depicts an imperative approach
  * of grouping a list of Person objects based on their age group.
  * 
- * Rewrite the groupAdultsPerAgeGroup method in Scala using higher order functions
+ * Rewrite the groupAdultsPerAgeGroup method in Kotlin using higher order functions
  * in @see {@link org.course.lab02.CollectionExercise02.groupAdultsPerAgeGroup}
  * 
  */

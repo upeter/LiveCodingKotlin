@@ -1,7 +1,7 @@
 package org.course.lab01
 
 /**
- * The goal of this exercise is to get familiar basic OO constructs in scala
+ * The goal of this exercise is to get familiar basic OO constructs in Kotlin
  *
  * Fix the code so that the unit test 'CurrencyExerciseTest' passes.
  *
