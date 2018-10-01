@@ -10,13 +10,11 @@ fun Int.square() = this * this
 /**
  * Exercise 2:
  * Define an extension property on String that returns the tail of the String.
- * The tail is the remaining part of the String after the first character.
+ * The tail is the remaining part of the String new the first character.
  * Tip: the removePrefix(...) might be of good use...
  */
 val String.tail: String
-    get() =
-        if (this.firstOrNull() == null) this
-        else this.removePrefix(this.first().toString())
+    get() = this.firstOrNull()?.let { this.removePrefix(it.toString()) } ?: this
 
 
 /**
@@ -24,7 +22,7 @@ val String.tail: String
  * Define an extension method equals(...) on the root type of Kotlin's type hierarchy (Any?),
  * so that an equality check also works on Nullable types.
  */
-fun Any?.equals(other:Any?):Boolean = if(this != null) this.equals(other) else other == null
+fun Any?.equals(other: Any?): Boolean = this?.let { it.equals(other) } ?: other == null
 
 
 /**
@@ -33,5 +31,5 @@ fun Any?.equals(other:Any?):Boolean = if(this != null) this.equals(other) else o
  * as a List<T>.
  */
 inline fun <reified T> Iterable<Any>.filterByType(): List<T> =
-    this.filter { it is T }.map { it as T }
+        this.filter { it is T }.map { it as T }
 
