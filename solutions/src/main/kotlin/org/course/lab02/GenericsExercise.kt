@@ -1,4 +1,4 @@
-package org.course.lab03
+package org.course.lab02
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -44,19 +44,19 @@ class Dog(name: String) : Animal(name) {
 * Print domain (Exercise 1a, 1b)
 * ------------------
 */
-abstract class Printer {
-    abstract fun print(input: Any): Unit
+abstract class Printer<in T> {
+    abstract fun print(input: T): Unit
 }
 
-class AnimalPrinter : Printer() {
-    override fun print(animal: Any) = if (animal is Animal) println("The ${animal.type} is called ${animal.name}") else throw IllegalArgumentException("$animal is no animal!!!")
+class AnimalPrinter : Printer<Animal>() {
+    override fun print(animal: Animal) = println("The ${animal.type} is called ${animal.name}")
 }
 
 /*------------------
 * Animalplace domain (Exercise 2)
 * ------------------
 */
-open class AnimalPlace<T : Animal>(val animal: T)
+open class AnimalPlace<out T : Animal>(val animal: T)
 
 class DogHouse(dog: Dog) : AnimalPlace<Dog>(dog) {
     fun serialize(f: Transformer<Dog, Document>) = f.transform(animal)
@@ -82,7 +82,7 @@ data class JsonDoc(override val tag: String, override val content: String) : Doc
 * Transformation domain (Exercise 3)
 * ------------------
 */
-interface Transformer<I, O> {
+interface Transformer<in I, out O> {
     fun transform(i: I): O
 }
 
