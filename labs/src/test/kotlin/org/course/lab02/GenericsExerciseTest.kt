@@ -1,7 +1,6 @@
-package org.course.lab03
+package org.course.lab02
 
 import io.kotlintest.specs.WordSpec
-import ch.qos.logback.classic.Logger as LogbackLogger
 
 class GenericsExerciseTest : WordSpec() {
     init {

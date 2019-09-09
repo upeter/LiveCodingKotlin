@@ -42,11 +42,11 @@ class Euro(val euro: Int, val cents: Int = 0) : Currency(Symbol.EUR), Comparable
     infix operator fun times(n: Int): Euro = fromCents(n * inCents)
 
     infix operator fun div(n: Int): Euro {
-        require(n > 0, { "Divider must be greater than 0" })
+        require(n > 0) { "Divider must be greater than 0" }
         return fromCents(inCents / n)
     }
 
-    override fun toString() = "${symbol.sign}: $euro,${if (cents > 0) "${String.format("%02d", cents)}" else "--"}"
+    override fun toString() = "${symbol.sign}: $euro,${if (cents > 0) String.format("%02d", cents) else "--"}"
 
     override fun compareTo(that: Euro): Int = inCents - that.inCents
 
