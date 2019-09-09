@@ -93,7 +93,7 @@ object CollectionExercise04 {
      * To keep it simple it's ok to use String.split to extract all words of a sentence.
      */
     fun calcLengthLongestWord(vararg lines: String): Int =
-        lines.flatMap { it.split(" ").map{it.length} }.max()!!
+        lines.flatMap { it.split(" ").map{it.length} }.max() ?: 0
 }
 
 /*========================================================== */
