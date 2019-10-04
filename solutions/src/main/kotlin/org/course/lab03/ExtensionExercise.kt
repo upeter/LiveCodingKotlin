@@ -1,5 +1,7 @@
 package org.course.lab03
 
+import java.util.Scanner
+
 
 /**
  * Exercise 1:
@@ -19,10 +21,10 @@ val String.tail: String
 
 /**
  * Exercise 3:
- * Define an extension method equals(...) on the root type of Kotlin's type hierarchy (Any?),
- * so that an equality check also works on Nullable types.
+ * Define an extension method sameLength(...) on nullable String's (String?),
+ * to check that they have the same length regardless whether they are null or not.
  */
-fun Any?.equals(other: Any?): Boolean = this?.let { it.equals(other) } ?: other == null
+fun String?.sameLength(other: String?): Boolean = this?.length == other?.length
 
 
 /**
@@ -33,3 +35,18 @@ fun Any?.equals(other: Any?): Boolean = this?.let { it.equals(other) } ?: other 
 inline fun <reified T> Iterable<Any>.filterByType(): List<T> =
         this.filter { it is T }.map { it as T }
 
+/**
+ * Exercise 5:
+ * 5a)
+ * Replace the function parameter transform:(String) -> String of doWithText(...)  with a 'function literal with receiver' so that the caller of this
+ * higher order method can use 'this' to reference the String rather than 'it'.
+ *
+ * 5b)
+ * Refactor the implementation of the doWithText(...) method so that all operations on Scanner are executed in the same scope by
+ * using one of Kotlin's scope functions.
+ */
+fun doWithText(transform: String.() -> String): String =
+        Scanner(object {}.javaClass.getResourceAsStream("/text.txt")).run {
+            useDelimiter("\\Z")
+            next().transform()
+        }

@@ -1,5 +1,7 @@
 package org.course.lab03
 
+import java.util.*
+
 
 /**
  * Exercise 1:
@@ -26,3 +28,18 @@ package org.course.lab03
  * as a List<T>.
  */
 
+/**
+ * Exercise 5:
+ * 5a)
+ * Replace the function parameter transform:(String) -> String of doWithText(...)  with a 'function type with receiver' so that the caller of this
+ * higher order method can use 'this' to reference the String rather than 'it'.
+ *
+ * 5b)
+ * Refactor the implementation of the doWithText(...) method so that all operations on Scanner are executed in the same scope by
+ * using one of Kotlin's scope functions.
+ */
+fun doWithText(transform: (String) -> String): String {
+    val scanner = Scanner(object {}.javaClass.getResourceAsStream("/text.txt"))
+    scanner.useDelimiter("\\Z")
+    return transform(scanner.next())
+}
