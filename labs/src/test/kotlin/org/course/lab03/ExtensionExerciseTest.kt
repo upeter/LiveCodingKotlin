@@ -34,7 +34,7 @@ class ExtensionExerciseTest : WordSpec() {
 //                l.filterByType<String>() should containExactly("a")
 
             }
-            "Exercise 5: have doWithText(...) use a 'function type with receiver' as argument" {
+            "Exercise 5: have doWithText(...) use a 'function literal with receiver' as argument" {
                 TODO("uncomment next lines")
 //                val txt = doWithText { toUpperCase() }
 //                txt.all { !it.isLowerCase() } shouldBe(true)

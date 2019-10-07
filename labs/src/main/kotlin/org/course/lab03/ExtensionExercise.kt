@@ -31,7 +31,7 @@ import java.util.*
 /**
  * Exercise 5:
  * 5a)
- * Replace the function parameter transform:(String) -> String of doWithText(...)  with a 'function type with receiver' so that the caller of this
+ * Replace the function parameter transform:(String) -> String of doWithText(...)  with a 'function literal with receiver' so that the caller of this
  * higher order method can use 'this' to reference the String rather than 'it'.
  *
  * 5b)
