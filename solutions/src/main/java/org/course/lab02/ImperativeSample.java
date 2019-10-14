@@ -1,6 +1,7 @@
 package org.course.lab02;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This piece of java code depicts an imperative approach
@@ -38,7 +39,6 @@ public class ImperativeSample {
 	 * @return grouped adults
 	 */
 	public static Map<Integer, List<Person>> groupAdultsPerAgeGroup(List<Person> persons) {
-
 		// filter adults
 		List<Person> adults = new ArrayList<Person>();
 		for (Person p : persons) {
@@ -66,6 +66,15 @@ public class ImperativeSample {
 			adultsPerAgeGroup.put(ageGroup, ageGroupPersons);
 		}
 		return adultsPerAgeGroup;
+
+
+
+	}
+
+	public Map<Integer, List<Person>> groupAdultsPerAgeGroupWithStream() {
+		return persons.stream().filter(p -> p.getAge() > 18)
+				.sorted(Comparator.comparing(Person::getName))
+				.collect(Collectors.groupingBy(p -> p.getAge() / 10 * 10));
 	}
 
 	public static void main(String[] args) {
