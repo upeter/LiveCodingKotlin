@@ -40,7 +40,7 @@ object CollectionExercise01 {
         val input = "ejp mysljylc kd kxveddknmc re jsicpdrysi rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd de kr kd eoya kw aej tysr re ujdr lkgc jv "
         val output = "our language is impossible to understand there are twenty six factorial possibilities so it is okay if you want to just give up"
         val alphabet = 'a'..'z'
-        val missing = alphabet - input
+        val missing = alphabet.toSet() - input.toSet()
         val mapping = (input zip output).toSet()
 
         mapping.groupBy { it.first }.values.all { it.size == 1 }
