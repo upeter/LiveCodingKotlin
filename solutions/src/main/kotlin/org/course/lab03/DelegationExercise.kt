@@ -32,7 +32,7 @@ class Company(private val employees: List<Employee>) : List<Employee> by employe
 
     val averageAge by lazy {
         info("init averageAge")
-        employees.map { it.age }.average()
+        map { it.age }.average()
     }
 
     companion object {

@@ -26,7 +26,9 @@ class DelegationExerciseTest : WordSpec() {
             "Company class should delegate List and Logger class" {
                 val c = Company(emptyList())
                 c::class.functions.any { it.name == "isEmpty" } shouldBe true
-                c::class.functions.any { it.name == "info" }
+                c::class.functions.any { it.name == "info" } shouldBe true
+                (c is Logger) shouldBe true
+                (c is List<*>) shouldBe true
             }
         }
         "DelegationExercise.PropertyDelegation" should {

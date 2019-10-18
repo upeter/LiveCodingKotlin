@@ -13,16 +13,18 @@ fun Int.square() = this * this
  * Exercise 2:
  * Define an extension property on String that returns the tail of the String.
  * The tail is the remaining part of the String new the first character.
- * Tip: the removePrefix(...) might be of good use...
+ * Tip: String’s drop(...) method might be of good use...
  */
 val String.tail: String
-    get() = this.firstOrNull()?.let { this.removePrefix(it.toString()) } ?: this
-
+    get() {
+        val first = firstOrNull()
+        return if (isEmpty()) this else this.drop(1)
+    }
 
 /**
  * Exercise 3:
- * Define an extension method sameLength(...) on nullable String's (String?),
- * to check that they have the same length regardless whether they are null or not.
+ * Define an extension property tail on String that returns the remaining part of the String
+ * after the first character or an empty String if no character(s) is/are available.
  */
 fun String?.sameLength(other: String?): Boolean = this?.length == other?.length
 
@@ -50,3 +52,4 @@ fun doWithText(transform: String.() -> String): String =
             useDelimiter("\\Z")
             next().transform()
         }
+

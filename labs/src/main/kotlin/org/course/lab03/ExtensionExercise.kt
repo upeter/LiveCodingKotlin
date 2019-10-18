@@ -10,15 +10,16 @@ import java.util.*
 
 /**
  * Exercise 2:
- * Define an extension *property* tail on String that returns the remaining part of the String after the first character.
- * Tip: the removePrefix(...) might be of good use...
+ * Define an extension *field* tail on String that returns the remaining part of the String
+ * after the first character or an empty String if no character(s) is/are available.
+ * Tip: String’s drop(...) method might be of good use...
  */
 
 
 /**
  * Exercise 3:
- * Define an extension method equals(...) on the root type of Kotlin's type hierarchy (Any?),
- * so that an equality check also works on Nullable types.
+ * Define an extension property tail on String that returns the remaining part of the String
+ * after the first character or an empty String if no character(s) is/are available.
  */
 
 

@@ -1,8 +1,9 @@
 package org.course.lab03
 
+import io.kotlintest.matchers.collections.containExactly
+import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.WordSpec
-import ch.qos.logback.classic.Logger as LogbackLogger
 
 class ExtensionExerciseTest : WordSpec() {
     init {
