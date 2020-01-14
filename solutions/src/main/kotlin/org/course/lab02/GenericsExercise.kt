@@ -36,7 +36,7 @@ open class Animal(val name: String) {
 }
 
 class Dog(name: String) : Animal(name) {
-    fun barf() = println("$type with name $name says: barf")
+    fun bark() = println("$type with name $name says: barf")
 }
 
 
