@@ -36,7 +36,7 @@ class CoroutineExerciseTest : WordSpec() {
      * (see implementation of rateUSD_Futures). Resume the Continuation when the scheduler fires with the value of the
      * callable:() -> T function.
      */
-    suspend fun <T> ScheduledExecutorService.awaitScheduled(delay: Long, unit: TimeUnit, callable: () -> T):T = TODO()
+    fun <T> ScheduledExecutorService.awaitScheduled(delay: Long, unit: TimeUnit, callable: () -> T):T = TODO()
 
 
     val serviceBankA = CurrencyService(120, 1000)

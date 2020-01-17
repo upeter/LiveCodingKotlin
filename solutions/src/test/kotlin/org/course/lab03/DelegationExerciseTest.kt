@@ -2,11 +2,8 @@ package org.course.lab03
 
 import ch.qos.logback.classic.spi.ILoggingEvent
 import ch.qos.logback.core.read.ListAppender
-import io.kotlintest.Description
-import io.kotlintest.TestResult
+import io.kotlintest.*
 import io.kotlintest.extensions.TestListener
-import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.WordSpec
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -77,12 +74,12 @@ class DelegationExerciseTest : WordSpec() {
     class TimerListener(val listAppender: ListAppender<ILoggingEvent>) : TestListener {
         private val logger: LogbackLogger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as LogbackLogger
 
-        override fun beforeTest(description: Description): Unit {
+        override fun beforeTest(description: TestCase): Unit {
             logger.addAppender(listAppender)
             listAppender.start()
         }
 
-        override fun afterTest(description: Description, result: TestResult): Unit {
+        override fun afterTest(description: TestCase, result: TestResult): Unit {
             listAppender.stop()
             listAppender.list.clear()
             logger.detachAppender(listAppender)
