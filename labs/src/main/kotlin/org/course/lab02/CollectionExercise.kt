@@ -68,7 +68,7 @@ object CollectionExercise03 {
      * checkValuesIncrease(listOf1,2,3)) == true
      * checkValuesIncrease(listOf1,2,2)) == false
      */
-    fun <T> checkValuesIncrease(seq: List<T>): Boolean =
+    fun <T:Comparable<T>> checkValuesIncrease(seq: List<T>): Boolean =
     TODO("fix me")
 
 }
