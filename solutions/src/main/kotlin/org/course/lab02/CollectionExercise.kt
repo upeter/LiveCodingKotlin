@@ -79,10 +79,9 @@ object CollectionExercise03 {
      * checkValuesIncrease(listOf1,2,3)) == true
      * checkValuesIncrease(listOf1,2,2)) == false
      */
-    fun <T : Comparable<T>> checkValuesIncrease(seq: List<T>): Boolean =
-            if (seq.size <= 1) true else seq
-                    .windowed(size = 2)
-                    .all{list -> list[0] < list[1]}
+    fun <T : Comparable<T>> checkValuesIncrease(seq: List<T>): Boolean {
+        return seq.windowed(size = 2).all { it.first() < it.last() }
+    }
 
 }
 /*========================================================== */
@@ -93,7 +92,7 @@ object CollectionExercise04 {
      * To keep it simple it's ok to use String.split to extract all words of a sentence.
      */
     fun calcLengthLongestWord(vararg lines: String): Int =
-        lines.flatMap { it.split(" ").map{it.length} }.max() ?: 0
+            lines.flatMap { it.split(" ").map { it.length } }.max() ?: 0
 }
 
 /*========================================================== */
@@ -104,7 +103,7 @@ object CollectionExercise05 {
      * E.g. listOf1,2,3) is [2])
      */
     fun filterWithFold(seq: List<Int>): List<Int> {
-       return seq.fold(emptyList()){acc, i -> if(i % 2 == 0) acc + i else acc }
+        return seq.fold(emptyList()) { acc, i -> if (i % 2 == 0) acc + i else acc }
     }
 
     /**
@@ -113,10 +112,10 @@ object CollectionExercise05 {
      * E.g: listOf1,2,3) becomes mapOf(true=[2]), false=[1,3])
      */
     fun groupByWithFold(seq: List<Int>): Map<Boolean, List<Int>> =
-       seq.fold(emptyMap()){acc, i ->
-           val evenOrOdd = i % 2 == 0
-           acc + (evenOrOdd to (acc.getOrDefault(evenOrOdd, emptyList()) + i))
-    }
+            seq.fold(emptyMap()) { acc, i ->
+                val evenOrOdd = i % 2 == 0
+                acc + (evenOrOdd to (acc.getOrDefault(evenOrOdd, emptyList()) + i))
+            }
 }
 
 

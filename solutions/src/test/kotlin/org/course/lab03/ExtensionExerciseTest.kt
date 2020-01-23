@@ -25,7 +25,7 @@ class ExtensionExerciseTest : WordSpec() {
                 noFoo.sameLength(foo) shouldBe false
                 foo.sameLength(noFoo) shouldBe false
             }
-            "Exercise 4: have Iterable<Any> extended with an filterByType method" {
+            "Exercise 4: have List<Any> extended with an filterByType method" {
                 val l = listOf("a", 2, 3.0, {})
                 l.filterByType<Number>() should containExactly(2, 3.0)
                 l.filterByType<String>() should containExactly("a")

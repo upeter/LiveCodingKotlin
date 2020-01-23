@@ -75,10 +75,10 @@ object ControlFlowExercise3 {
     fun <T> diffResult(prop: PropChange<T>): String {
         val (_, old, new) = prop
         return when {
-            old == null && new != null -> "added"
-            old != null && new == null -> "removed"
-            old != new                 -> "changed"
-            else                       -> "unchanged"
+            old == new -> "unchanged"
+            old == null -> "added"
+            new == null -> "removed"
+            else -> "changed"
         }
     }
 

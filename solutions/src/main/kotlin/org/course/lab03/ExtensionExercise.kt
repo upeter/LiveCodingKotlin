@@ -16,10 +16,7 @@ fun Int.square() = this * this
  * Tip: String’s drop(...) method might be of good use...
  */
 val String.tail: String
-    get() {
-        val first = firstOrNull()
-        return if (isEmpty()) this else this.drop(1)
-    }
+    get() = this.drop(1)
 
 /**
  * Exercise 3:
@@ -31,10 +28,10 @@ fun String?.sameLength(other: String?): Boolean = this?.length == other?.length
 
 /**
  * Exercise 4:
- * Define an extension method filterByType() on Iterable<Any>, which filters and returns all instances of the given type
+ * Define an extension method filterByType() on List<Any>, which filters and returns all instances of the given type
  * as a List<T>.
  */
-inline fun <reified T> Iterable<Any>.filterByType(): List<T> =
+inline fun <reified T> List<Any>.filterByType(): List<T> =
         this.filter { it is T }.map { it as T }
 
 /**

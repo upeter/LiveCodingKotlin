@@ -11,7 +11,7 @@ public class ExhaustiveNullCheckSample {
                 if (hotel.getStars() != null) {
                     stars = hotel.getStars();
                 }
-                String address = hotel.getName() != null ? hotel.getName() : "" + " " + stars + "at " + hotel.getAddress() != null ? hotel.getAddress() : "";
+                String address = hotel.getName() != null ? hotel.getName() : "" + " " + stars + "at " + (hotel.getAddress() != null ? hotel.getAddress() : "");
                 if (account != null && account.getEmail() != null) {
                     return createMessage(account.getEmail(), amount, address);
                 }
