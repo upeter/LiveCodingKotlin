@@ -18,8 +18,8 @@ import java.util.*
 
 /**
  * Exercise 3:
- * Define an extension property tail on String that returns the remaining part of the String
- * after the first character or an empty String if no character(s) is/are available.
+ * Define an extension method sameLength(other:String):Boolean on nullable String's (String?)
+ * to check that they have the same length regardless whether they are null or not.
  */
 
 
